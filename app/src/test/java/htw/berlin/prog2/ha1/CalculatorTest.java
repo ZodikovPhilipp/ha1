@@ -90,5 +90,16 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("Should display 0 when calculator is first used")
+    void testInitialScreenValue() {
+        Calculator calc = new Calculator();    //neues Objekt
+
+        String expected = "0";    //Bildschirm zeigt 0 an
+        String actual = calc.readScreen(); //ruft den aktuellen Bildschirminhalt des Rechner ab
+
+        assertEquals(expected, actual); //Vergleicht erwarteten Wert mit tatsächlichem Wert
+    }
 }
 

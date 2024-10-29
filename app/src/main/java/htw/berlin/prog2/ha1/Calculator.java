@@ -19,7 +19,7 @@ public class Calculator {
      */
     public String readScreen() {
         return screen;
-    }
+    }   //sieht gut aus
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -49,6 +49,7 @@ public class Calculator {
         latestOperation = "";
         latestValue = 0.0;
     }
+//löscht beim einmaligen Drücken schon alles
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
@@ -85,6 +86,7 @@ public class Calculator {
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
+// ür 1/x: Wenn der Bildschirmwert 0 ist, wird bei 1/x eine Division durch Null verursacht. hier sollte "Error" angezeigt werden.
 
     /**
      * Empfängt den Befehl der gedrückten Dezimaltrennzeichentaste, im Englischen üblicherweise "."
