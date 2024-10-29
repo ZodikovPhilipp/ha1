@@ -45,9 +45,12 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+       if (!screen.equals("0")) { //Wenn der nicht schon 0 anzeigt
+           screen = "0";    //setzt Bildschirm auf 0
+       } else {     //Wenn der Bildschirm bereits 0 anzeigt
+           latestOperation = "";
+           latestValue = 0; //Setzt den letzten Speicher auf 0
+       }
     }
 //löscht beim einmaligen Drücken schon alles
 
