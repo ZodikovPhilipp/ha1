@@ -76,17 +76,17 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
-        latestValue = Double.parseDouble(screen);
+        latestValue = Double.parseDouble(screen); //speichert aktuellen Bildschirmwert als latestValue
         latestOperation = operation;
-        var result = switch(operation) {
+        var result = switch(operation) { //verwendet eine Swtich um auszuführen
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
+            case "1/x" -> (latestValue == 0) ? Double.NaN : 1 / latestValue; // hier änderung
+            default -> throw new IllegalArgumentException(); //wirft fehler falls unbekannte Operation
         };
         screen = Double.toString(result);
-        if(screen.equals("NaN")) screen = "Error";
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.equals("NaN") || screen.equals("Infinity")) screen = "Error";
+        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10); //kürzt auf 10 zeichen
 
     }
 // ür 1/x: Wenn der Bildschirmwert 0 ist, wird bei 1/x eine Division durch Null verursacht. hier sollte "Error" angezeigt werden.
