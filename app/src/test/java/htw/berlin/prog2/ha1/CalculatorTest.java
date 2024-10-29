@@ -107,14 +107,12 @@ class CalculatorTest {
     void testClearKeyDoublePress() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
-        calc.pressClearKey(); //Erstes Drücken -> Bildschirm sollte 0 anzeigen
-        assertEquals("0", calc.readScreen()); //Prüft ob Bildschirm auf 0 zurückgesetzt
+        calc.pressDigitKey(5); // Drückt die Zifferntaste "5", sodass der Bildschirm jetzt "5" anzeigt
+        calc.pressClearKey(); // Erstes Drücken der Clear-Taste, Bildschirm sollte auf "0" zurückgesetzt sein
+        assertEquals("0", calc.readScreen()); // Prüft, ob der Bildschirm auf "0" zurückgesetzt wurde
 
-        calc.pressDigitKey(); //Zweites Drücken -> alles zurücksetzen
-        calc.pressEqualsKey(); //Drückt = zeichen um zu schauen ob alles zurücksetzt
-        assertEquals("0", calc.readScreen()); //Erwarte das alles zurücksetzt
-
+        calc.pressClearKey(); // Zweites Drücken der Clear-Taste, sollte jetzt alles zurücksetzen
+        assertEquals("0", calc.readScreen()); // Erwartung: Bildschirm zeigt "0" an, da alles zurückgesetzt sein sollte
     }
 
     @Test

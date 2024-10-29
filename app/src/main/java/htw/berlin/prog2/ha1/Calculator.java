@@ -14,6 +14,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean isFirstClear = true; // Variable, um zu unterscheiden, ob die Clear-Taste das erste Mal gedrückt wurde
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -45,12 +46,15 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-       if (!screen.equals("0")) { //Wenn der nicht schon 0 anzeigt
-           screen = "0";    //setzt Bildschirm auf 0
-       } else {     //Wenn der Bildschirm bereits 0 anzeigt
-           latestOperation = "";
-           latestValue = 0; //Setzt den letzten Speicher auf 0
-       }
+        if (isFirstClear) { // Beim ersten Drücken der Clear-Taste
+            screen = "0"; // Setzt nur den Bildschirm auf "0"
+            isFirstClear = false; // Markiert, dass die Clear-Taste einmal gedrückt wurde
+        } else { // Beim zweiten Drücken der Clear-Taste
+            screen = "0"; // Setzt den Bildschirm erneut auf "0"
+            latestOperation = ""; // Löscht die gespeicherte Operation
+            latestValue = 0.0; // Setzt den zwischengespeicherten Wert auf 0
+            isFirstClear = true; // Setzt die Variable zurück für das nächste Mal
+        }
     }
 //löscht beim einmaligen Drücken schon alles
 
