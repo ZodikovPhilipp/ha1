@@ -101,5 +101,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual); //Vergleicht erwarteten Wert mit tatsächlichem Wert
     }
+
+    @Test
+    @DisplayName("should reset all values on double press of clear key") //Test drückt Clear Taste zweimal um alles zurückzusetzen - wird rot weil alles zurücksetzt
+    void testClearKeyDoublePress() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressClearKey(); //Erstes Drücken -> Bildschirm sollte 0 anzeigen
+        assertEquals("0", calc.readScreen()); //Prüft ob Bildschirm auf 0 zurückgesetzt
+
+        calc.pressDigitKey(); //Zweites Drücken -> alles zurücksetzen
+        calc.pressEqualsKey(); //Drückt = zeichen um zu schauen ob alles zurücksetzt
+        assertEquals("0", calc.readScreen()); //Erwarte das alles zurücksetzt
+
+    }
 }
 
