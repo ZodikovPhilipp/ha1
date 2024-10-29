@@ -116,5 +116,20 @@ class CalculatorTest {
         assertEquals("0", calc.readScreen()); //Erwarte das alles zurücksetzt
 
     }
+
+    @Test
+    @DisplayName("should display error when inverting zero") //testet ob Error angezeigt wird wenn durch 0 geteilt wird
+    void testDivisionByZeroWithInverse() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(0); // Drückt die Zifferntaste "0"
+        calc.pressUnaryOperationKey("1/x"); // Versucht, 1 durch den Bildschirmwert "0" zu teilen (1/0)
+
+        String expected = "Error"; // Erwartetes Ergebnis: Der Bildschirm zeigt "Error" an
+        String actual = calc.readScreen(); // Ruft den aktuellen Bildschirminhalt ab
+
+        assertEquals(expected, actual); // Vergleicht den erwarteten Wert "Error" mit dem tatsächlichen Wert
+    }
+
 }
 
